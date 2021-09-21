@@ -1,8 +1,7 @@
-module "aci_scaffolding" {
-  source  = "netascode/scaffolding/aci"
+module "aci_vpc_policy" {
+  source  = "netascode/vpc-policy/aci"
   version = ">= 0.0.1"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  name               = "VPC1"
+  peer_dead_interval = 300
 }

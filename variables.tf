@@ -1,5 +1,5 @@
 variable "name" {
-  description = "Tenant name."
+  description = "VPC policy name."
   type        = string
 
   validation {
@@ -8,24 +8,13 @@ variable "name" {
   }
 }
 
-variable "alias" {
-  description = "Tenant alias."
-  type        = string
-  default     = ""
+variable "peer_dead_interval" {
+  description = "Peer dead interval. Minimum value: 5. Maximum value: 600."
+  type        = number
+  default     = 200
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.alias))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
-  }
-}
-
-variable "description" {
-  description = "Tenant description."
-  type        = string
-  default     = ""
-
-  validation {
-    condition     = can(regex("^[a-zA-Z0-9\\!#$%()*,-./:;@ _{|}~?&+]{0,128}$", var.description))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `\\`, `!`, `#`, `$`, `%`, `(`, `)`, `*`, `,`, `-`, `.`, `/`, `:`, `;`, `@`, ` `, `_`, `{`, `|`, }`, `~`, `?`, `&`, `+`. Maximum characters: 128."
+    condition     = var.peer_dead_interval >= 5 && var.peer_dead_interval <= 600
+    error_message = "Minimum value: 5. Maximum value: 600."
   }
 }

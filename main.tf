@@ -1,9 +1,8 @@
-resource "aci_rest" "fvTenant" {
-  dn         = "uni/tn-${var.name}"
-  class_name = "fvTenant"
+resource "aci_rest" "vpcInstPol" {
+  dn         = "uni/fabric/vpcInst-${var.name}"
+  class_name = "vpcInstPol"
   content = {
     name      = var.name
-    nameAlias = var.alias
-    descr     = var.description
+    deadIntvl = var.peer_dead_interval
   }
 }
