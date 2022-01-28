@@ -1,9 +1,9 @@
 output "dn" {
-  value       = aci_rest.vpcInstPol.id
+  value       = aci_rest_managed.vpcInstPol.id
   description = "Distinguished name of `vpcInstPol` object."
 }
 
 output "name" {
-  value       = aci_rest.vpcInstPol.content.name
+  value       = aci_rest_managed.vpcInstPol.content.name
   description = "VPC policy name."
 }

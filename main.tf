@@ -1,4 +1,4 @@
-resource "aci_rest" "vpcInstPol" {
+resource "aci_rest_managed" "vpcInstPol" {
   dn         = "uni/fabric/vpcInst-${var.name}"
   class_name = "vpcInstPol"
   content = {
